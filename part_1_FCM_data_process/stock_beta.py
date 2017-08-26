@@ -3,7 +3,9 @@
 # 剔除建筑业类、金融业类的股票 'E' 'J'
 # 将本期与下一期的股票代码比较，删去下一期没有的股票代码 -> 保证股票在整个研究期间内都有数据
 # 记录股票及其对应的股票门类，放置于 data/../stock_type 文件夹中
+# 格式：股票代码，门类代码
 # 处理完毕的股票及其beta值，放置于 data/../csv 文件夹中
+# 格式：股票代码，股票名称，门类代码，beta
 
 import os
 import xlrd
@@ -13,14 +15,14 @@ import csv
 osPath = os.path.dirname(os.getcwd()) + '/data/'
 # 待处理文件夹
 beta_file_path = ['stock_SH_beta/', 'stock_SZ_beta/']
-# 用来存储不同市场，各研究期间的股票代码文件名称
-beta_file_name = ['stock_beta2var_SH', 'stock_beta2var_SZ']
 # 待处理文件名
 period = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18',
           '19', '20', '21']
 # 输出文件夹
 output_file_path_type = 'stock_type/'
 output_file_path_csv = 'csv/'
+# 用来存储不同市场，各研究期间的股票代码文件名称
+beta_file_name = ['stock_beta2var_SH', 'stock_beta2var_SZ']
 # 两个后缀名
 xls_ext_name = '.xls'
 csv_ext_name = '.csv'
