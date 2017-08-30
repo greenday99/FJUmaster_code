@@ -1,3 +1,6 @@
+# -*- coding:utf-8 -*-
+# copyright: GU, MANQING
+
 # 蒙地卡罗模拟法
 
 import numpy as np

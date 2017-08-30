@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+# copyright: GU, MANQING
 
 # 计算历史模拟法和蒙地卡罗模拟法的VaR值
 # 要求：在训练期中，至少要有230天的有效交易日
@@ -144,17 +145,11 @@ for sub_var_file_path in var_file_path:
                             now_item.append(float(row[2]))
                     else:
                         # 获取这个商品的初始资产价格
-                        try:
-                            item_origin_price = origin_price[item_id_previous]
-                            unadjuested_var = simulation_his.getVaR(now_item, now_sim_days, item_origin_price,
-                                                                    CONFIDENCE_LIMIT)
-                            adjuested_var = simulation_mont.getVaR(now_item, now_sim_days, item_origin_price,
-                                                                   CONFIDENCE_LIMIT, SIMULATE_TIMES)
-                        except:
-                            print(input_file_path_0)
-                            print(item_id_previous)
-                            print(now_item)
-                            exit(1)
+                        item_origin_price = origin_price[item_id_previous]
+                        unadjuested_var = simulation_his.getVaR(now_item, now_sim_days, item_origin_price,
+                                                                CONFIDENCE_LIMIT)
+                        adjuested_var = simulation_mont.getVaR(now_item, now_sim_days, item_origin_price,
+                                                               CONFIDENCE_LIMIT, SIMULATE_TIMES)
                         # 将结果放入period_list中
                         period_list.append([item_id_now, unadjuested_var, adjuested_var])
                         # 开始记录下一个商品
